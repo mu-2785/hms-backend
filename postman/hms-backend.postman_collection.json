@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "HMS Backend",
+    "description": "Patient module is complete as a reference. Add a folder per module as you implement it (Department, Doctor, Appointment, ...), following this same structure.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api/v1" },
+    { "key": "patientId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/patients",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"1990-05-20\",\n  \"gender\": \"FEMALE\",\n  \"bloodGroup\": \"O_POSITIVE\",\n  \"address\": \"123 Main St\",\n  \"emergencyContactName\": \"John Doe\",\n  \"emergencyContactPhone\": \"9876500000\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Patient By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/patients/{{patientId}}"
+          }
+        },
+        {
+          "name": "Get All Patients (paginated)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/patients?page=0&size=20&sort=lastName,asc"
+          }
+        },
+        {
+          "name": "Search Patients By Name",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/patients?name=doe"
+          }
+        },
+        {
+          "name": "Update Patient",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/patients/{{patientId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"email\": \"jane.doe@example.com\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"1990-05-20\",\n  \"gender\": \"FEMALE\",\n  \"bloodGroup\": \"O_POSITIVE\",\n  \"address\": \"456 New St\",\n  \"emergencyContactName\": \"John Doe\",\n  \"emergencyContactPhone\": \"9876500000\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Patient",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/patients/{{patientId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

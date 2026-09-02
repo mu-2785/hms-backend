@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: hms-backend
+
+  profiles:
+    active: dev
+
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    root: INFO
+    com.hospital.hms: DEBUG
+    org.hibernate.SQL: DEBUG
